@@ -1,1 +1,1 @@
-# iOS-icon-extractor
+# iOS Icon Extractor
