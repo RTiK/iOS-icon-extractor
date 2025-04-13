@@ -44,12 +44,13 @@ std::list<std::string> Config::ToStrings(int argc, char* argv[]) {
 
 void Config::PrintHelp() const {
   std::cout << "iOS icon extractor from a desktop screenshot" << std::endl
-            << "Usage: extract\t" << arg_output_ << " output directory (default: current directory)" << std::endl
-            << "              \t" << arg_n_icons_page_ << " number of icons on page (default: 24)" << std::endl
-            << "              \t" << arg_n_icons_dock_ << " number of icons in dock (default: 4)" << std::endl
-            << "              \tscreenshot path"
+            << "Usage:" << std::endl
+            << "iOS-icon-extractor\t" << arg_output_ << " output directory (default: current directory)" << std::endl
+            << "                  \t" << arg_n_icons_page_ << " number of icons on page (default: 24)" << std::endl
+            << "                  \t" << arg_n_icons_dock_ << " number of icons in dock (default: 4)" << std::endl
+            << "                  \tscreenshot path"
             << std::endl
-            << "       extract\t" << arg_help_ << " print help" << std::endl;
+            << "iOS-icon-extractor\t" << arg_help_ << " print help" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, Config &config) {

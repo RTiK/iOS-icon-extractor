@@ -5,7 +5,7 @@
 
 class IconIO {
  private:
-  static const int squircle_radius_ = 64;
+  static const int squircle_radius_ = 90;
   static const int max_icons_on_page_ = 24;
   static const int max_icons_in_dock_ = 4;
 

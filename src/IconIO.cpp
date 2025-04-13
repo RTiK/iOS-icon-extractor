@@ -1,5 +1,6 @@
 #include "IconIO.h"
 #include "IconCenters.h"
+#include <cstdint>
 
 bool IconIO::IsInSquircle(const float x, const float y) {
   // shift the integer coordinates by half of integer because the equation expects the coordinate lines to go between
@@ -18,7 +19,7 @@ bool IconIO::IsInSquircle(const float x, const float y) {
 cv::Mat IconIO::ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_center) {
   int icon_width = 2 * squircle_radius_;
   int icon_height = 2 * squircle_radius_;
-  cv::Mat icon = cv::Mat::zeros(cv::Size(icon_width, icon_height), CV_16UC4);
+  cv::Mat icon = cv::Mat::zeros(cv::Size(icon_width, icon_height), CV_8UC4);
 
   for (int i = -squircle_radius_; i < squircle_radius_; i++) {  // horizontal; x
     for (int j = -squircle_radius_; j < squircle_radius_; j++) {  // vertical; y
@@ -27,8 +28,8 @@ cv::Mat IconIO::ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_ce
         int pos_y = icon_center.second + j;
         assert(pos_x >= 0 && pos_x < image.size[0]);
         assert(pos_y >= 0 && pos_y < image.size[1]);
-        cv::Vec<ushort, 4> c = image.at<cv::Vec<ushort, 4>>(pos_x, pos_y);
-        icon.at<cv::Vec<ushort, 4>>(squircle_radius_ + i, squircle_radius_ + j) = c;
+        cv::Vec<std::uint8_t, 4> c = image.at<cv::Vec<std::uint8_t, 4>>(pos_x, pos_y);
+        icon.at<cv::Vec<std::uint8_t, 4>>(squircle_radius_ + i, squircle_radius_ + j) = c;
       }
     }
   }
@@ -39,7 +40,7 @@ cv::Mat IconIO::ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_ce
 void IconIO::ExtractAndSavePageIcons(cv::Mat &image, int num_of_icons, const std::string &destination_dir) {
   assert(num_of_icons <= max_icons_on_page_);
 
-  auto icon_center_iter = icon_centers::kIphoneXrPage.begin();
+  auto icon_center_iter = icon_centers::kIphone13Page.begin();
 
   for (int i = 0; i < num_of_icons; i++) {
     cv::Mat icon = ReadIcon(image, *icon_center_iter++);
@@ -51,7 +52,7 @@ void IconIO::ExtractAndSavePageIcons(cv::Mat &image, int num_of_icons, const std
 void IconIO::ExtractAndSaveDockIcons(cv::Mat &image, int num_of_icons, const std::string &destination_dir) {
   assert(num_of_icons <= max_icons_in_dock_);
 
-  auto icon_center_iter = icon_centers::kIphoneXrDock[num_of_icons].begin();
+  auto icon_center_iter = icon_centers::kIphone13Dock[num_of_icons].begin();
 
   for (int i = 0; i < num_of_icons; i++) {
     cv::Mat icon = ReadIcon(image, *icon_center_iter++);
