@@ -12,24 +12,24 @@ bool IconIO::IsInSquircle(const float x, const float y) {
   // the colors. we keep this number <1 to cut off some of the edge of the icon
   float icon_border = 0.97f;
 
-  return std::pow(std::abs(x_shifted / (float) squircle_radius_), 5)
-      + std::pow(std::abs(y_shifted / (float) squircle_radius_), 5) <= icon_border;
+  return std::pow(std::abs(x_shifted / static_cast<float>(kSquircleRadius)), 5)
+      + std::pow(std::abs(y_shifted / static_cast<float>(kSquircleRadius)), 5) <= icon_border;
 }
 
 cv::Mat IconIO::ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_center) {
-  int icon_width = 2 * squircle_radius_;
-  int icon_height = 2 * squircle_radius_;
+  int icon_width = 2 * kSquircleRadius;
+  int icon_height = 2 * kSquircleRadius;
   cv::Mat icon = cv::Mat::zeros(cv::Size(icon_width, icon_height), CV_8UC4);
 
-  for (int i = -squircle_radius_; i < squircle_radius_; i++) {  // horizontal; x
-    for (int j = -squircle_radius_; j < squircle_radius_; j++) {  // vertical; y
-      if (IsInSquircle((float) i, (float) j)) {
+  for (int i = -kSquircleRadius; i < kSquircleRadius; i++) {  // horizontal; x
+    for (int j = -kSquircleRadius; j < kSquircleRadius; j++) {  // vertical; y
+      if (IsInSquircle(static_cast<float>(i), static_cast<float>(j))) {
         int pos_x = icon_center.first + i;
         int pos_y = icon_center.second + j;
         assert(pos_x >= 0 && pos_x < image.size[0]);
         assert(pos_y >= 0 && pos_y < image.size[1]);
         cv::Vec<std::uint8_t, 4> c = image.at<cv::Vec<std::uint8_t, 4>>(pos_x, pos_y);
-        icon.at<cv::Vec<std::uint8_t, 4>>(squircle_radius_ + i, squircle_radius_ + j) = c;
+        icon.at<cv::Vec<std::uint8_t, 4>>(kSquircleRadius + i, kSquircleRadius + j) = c;
       }
     }
   }
@@ -38,7 +38,7 @@ cv::Mat IconIO::ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_ce
 }
 
 void IconIO::ExtractAndSavePageIcons(cv::Mat &image, int num_of_icons, const std::string &destination_dir) {
-  assert(num_of_icons <= max_icons_on_page_);
+  assert(num_of_icons <= kMaxIconsOnPage);
 
   auto icon_center_iter = icon_centers::kIphone13Page.begin();
 
@@ -50,7 +50,7 @@ void IconIO::ExtractAndSavePageIcons(cv::Mat &image, int num_of_icons, const std
 }
 
 void IconIO::ExtractAndSaveDockIcons(cv::Mat &image, int num_of_icons, const std::string &destination_dir) {
-  assert(num_of_icons <= max_icons_in_dock_);
+  assert(num_of_icons <= kMaxIconsInDock);
 
   auto icon_center_iter = icon_centers::kIphone13Dock[num_of_icons].begin();
 

@@ -11,7 +11,6 @@ class Config {
   const std::string arg_output_ = "-o";
   const std::string arg_n_icons_page_ = "-n";
   const std::string arg_n_icons_dock_ = "-d";
-  // TODO ask for iphone model, alternatively deduce it from screenshot dimensions
 
   std::filesystem::path input_path_;  // mandatory
 

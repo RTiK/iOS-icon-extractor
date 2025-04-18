@@ -23,6 +23,6 @@ namespace icon_centers {
       {std::vector<std::pair<int, int>>{std::pair<int, int>(2352, 315), std::pair<int, int>(2352, 585), std::pair<int, int>(2352, 855)}},
       {std::vector<std::pair<int, int>>{std::pair<int, int>(2352, 180), std::pair<int, int>(2352, 450), std::pair<int, int>(2352, 720), std::pair<int, int>(2352, 990)}}  // dock
   };
-}
+}  // namespace icon_centers
 
 #endif //MOSAIC_EXTRACT_EXAMPLE_ICONCENTERS_H_

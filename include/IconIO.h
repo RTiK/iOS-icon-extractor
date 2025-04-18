@@ -5,9 +5,9 @@
 
 class IconIO {
  private:
-  static const int squircle_radius_ = 90;
-  static const int max_icons_on_page_ = 24;
-  static const int max_icons_in_dock_ = 4;
+  static const int kSquircleRadius = 90;
+  static const int kMaxIconsOnPage = 24;
+  static const int kMaxIconsInDock = 4;
 
   static bool IsInSquircle(const float x, const float y);
   static cv::Mat ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_center);
