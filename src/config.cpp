@@ -1,5 +1,5 @@
 #include <iostream>
-#include "config.h"
+#include "iOS-icon-extractor/config.hpp"
 
 Config::Config(int argc, char* argv[]) {
   auto args = ToStrings(argc, argv);

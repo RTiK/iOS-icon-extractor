@@ -1,5 +1,5 @@
-#include "IconIO.h"
-#include "IconCenters.h"
+#include "iOS-icon-extractor/IconIO.hpp"
+#include "iOS-icon-extractor/IconCenters.hpp"
 #include <cstdint>
 
 bool IconIO::IsInSquircle(const float x, const float y) {

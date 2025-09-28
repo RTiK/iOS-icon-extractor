@@ -5,9 +5,9 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(Headers
-        include/IconCenters.h
-        include/config.h
-        include/IconIO.h
+        include/iOS-icon-extractor/IconCenters.hpp
+        include/iOS-icon-extractor/config.hpp
+        include/iOS-icon-extractor/IconIO.hpp
         )
 
 set(Sources
@@ -18,7 +18,8 @@ set(Sources
 
 add_executable(iOS-icon-extractor
         ${Sources}
-        ${Headers})
+        ${Headers}
+        )
 
 find_package(OpenCV REQUIRED)
 
