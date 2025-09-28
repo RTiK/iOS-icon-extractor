@@ -10,7 +10,7 @@ There are a few things we need to do before taking a screenshot.
 
 Maybe you haven't noticed it, but the icons on your home screen move depending on the tilt of your device. Apple calls it the Parallax effect. The Extractor tool, however, needs to have the icons in their expected spot. Therefore, we need to disable this effect before we take the screenshot. To do that enable the Reduce Motion option found under
 
-> Settings > Accessibility > Motion > Reduce Motion
+`> Settings > Accessibility > Motion > Reduce Motion`
 
 ### Clear all notifications bubbles
 
