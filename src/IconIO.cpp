@@ -12,8 +12,8 @@ bool IconIO::IsInSquircle(const float x, const float y) {
   // the colors. we keep this number <1 to cut off some of the edge of the icon
   float icon_border = 0.97f;
 
-  return std::pow(std::abs(x_shifted / static_cast<float>(kSquircleRadius)), 5)
-      + std::pow(std::abs(y_shifted / static_cast<float>(kSquircleRadius)), 5) <= icon_border;
+  return std::pow(std::abs(x_shifted / static_cast<float>(kSquircleRadius)), 4)
+      + std::pow(std::abs(y_shifted / static_cast<float>(kSquircleRadius)), 4) <= icon_border;
 }
 
 cv::Mat IconIO::ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_center) {
@@ -40,7 +40,7 @@ cv::Mat IconIO::ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_ce
 void IconIO::ExtractAndSavePageIcons(cv::Mat &image, int num_of_icons, const std::string &destination_dir) {
   assert(num_of_icons <= kMaxIconsOnPage);
 
-  auto icon_center_iter = icon_centers::kIphone13Page.begin();
+  auto icon_center_iter = icon_centers::kIphone16Pro.begin();
 
   for (int i = 0; i < num_of_icons; i++) {
     cv::Mat icon = ReadIcon(image, *icon_center_iter++);
@@ -52,7 +52,7 @@ void IconIO::ExtractAndSavePageIcons(cv::Mat &image, int num_of_icons, const std
 void IconIO::ExtractAndSaveDockIcons(cv::Mat &image, int num_of_icons, const std::string &destination_dir) {
   assert(num_of_icons <= kMaxIconsInDock);
 
-  auto icon_center_iter = icon_centers::kIphone13Dock[num_of_icons].begin();
+  auto icon_center_iter = icon_centers::kIphone16ProDock[num_of_icons].begin();
 
   for (int i = 0; i < num_of_icons; i++) {
     cv::Mat icon = ReadIcon(image, *icon_center_iter++);

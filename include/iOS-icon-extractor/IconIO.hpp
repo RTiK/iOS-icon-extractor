@@ -5,7 +5,7 @@
 
 class IconIO {
  private:
-  static const int kSquircleRadius = 90;
+  static const int kSquircleRadius = 96;
   static const int kMaxIconsOnPage = 24;
   static const int kMaxIconsInDock = 4;
 
