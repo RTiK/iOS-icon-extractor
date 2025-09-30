@@ -20,18 +20,31 @@ Another thing you need to make sure is that no icon has a red notification bubbl
 
 When you have finished all steps above, you can take the screenshots of all your home screens and transfer them to your computer.
 
+## Building the tool
+
+Clone this repository to your computer and navigate to the root of the cloned repository.
+
+```sh
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
 ## Extracting icons
 
-The Extract tool can be found in the directory build/Extract/src/. It takes a screenshot (PNG) file as input and extracts the icons from the home screen and the dock, and stores it in the destination folder.
+The tool takes a screenshot (PNG) file as input and extracts the icons from the home screen and the dock, and stores it in the destination folder.
 
 ```sh
 # from the build directry
-cd Extract/src
-
-./Extract -n 16     # number of icons on the home screen page (default 24)
-          -d 4      # number of icons in dock (default 4)
-          -o page1/ # path to output folder (default current directory)
-          path/to/screenshot.png
+./ios-icon-extractor -n 16     # number of icons on the home screen page (default 24)
+                     -d 4      # number of icons in dock (default 4)
+                     -o page1/ # path to output folder (default current directory)
+                     path/to/screenshot.png
 ```
 
-Expected icon locations are defined in Extract/src/IconCenters.h. Currently, only iPhones with screen size 2532 x 1170 (e.g. iPhone 13 etc.) are supported.
+Expected icon locations are defined in `/src/IconCenters.h`. They are currently set for iPhone 16 Pro with iOS 26.
+
+## Nice to have code snippets
+
+- Use CMake to generate _clangd_ compile commands into the `build` folder: `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -B build`

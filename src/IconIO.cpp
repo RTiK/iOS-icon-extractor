@@ -12,6 +12,8 @@ bool IconIO::IsInSquircle(const float x, const float y) {
   // the colors. we keep this number <1 to cut off some of the edge of the icon
   float icon_border = 0.97f;
 
+  // the equation below is a good enough approximation of the squircle shape. an alternative would have been to manage
+  // a zoo of masks for different icon sizes
   return std::pow(std::abs(x_shifted / static_cast<float>(kSquircleRadius)), 4)
       + std::pow(std::abs(y_shifted / static_cast<float>(kSquircleRadius)), 4) <= icon_border;
 }
