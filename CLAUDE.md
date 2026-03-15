@@ -40,7 +40,7 @@ clang-tidy is configured via `.clang-tidy` (Google style). VS Code runs it autom
 ```
 Screenshot PNG → Config (parse args) → cv::imread()
     → IconIO::ReadIcon() (squircle crop per icon)
-    → cv::imwrite() → icon_N.png / dock_N.png
+    → cv::imwrite() → icon_<hex>.png / dock_<hex>.png
 ```
 
 ### Key modules

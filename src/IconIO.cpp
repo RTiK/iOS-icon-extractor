@@ -1,6 +1,9 @@
 #include "iOS-icon-extractor/IconIO.hpp"
 #include "iOS-icon-extractor/IconCenters.hpp"
 #include <cstdint>
+#include <iomanip>
+#include <random>
+#include <sstream>
 
 bool IconIO::IsInSquircle(const float x, const float y) {
   // shift the integer coordinates by half of integer because the equation expects the coordinate lines to go between
@@ -39,6 +42,14 @@ cv::Mat IconIO::ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_ce
   return icon;
 }
 
+std::string IconIO::RandomHex() {
+  static std::mt19937 rng(std::random_device{}());
+  static std::uniform_int_distribution<uint32_t> dist(0, 0xFFFFFF);
+  std::ostringstream oss;
+  oss << std::hex << std::setfill('0') << std::setw(6) << dist(rng);
+  return oss.str();
+}
+
 void IconIO::ExtractAndSavePageIcons(cv::Mat &image, int num_of_icons, const std::string &destination_dir) {
   assert(num_of_icons <= kMaxIconsOnPage);
 
@@ -46,7 +57,7 @@ void IconIO::ExtractAndSavePageIcons(cv::Mat &image, int num_of_icons, const std
 
   for (int i = 0; i < num_of_icons; i++) {
     cv::Mat icon = ReadIcon(image, *icon_center_iter++);
-    std::string file_name = "icon_" + std::to_string(i) + ".png";
+    std::string file_name = "icon_" + RandomHex() + ".png";
     cv::imwrite(destination_dir + file_name, icon);
   }
 }
@@ -58,7 +69,7 @@ void IconIO::ExtractAndSaveDockIcons(cv::Mat &image, int num_of_icons, const std
 
   for (int i = 0; i < num_of_icons; i++) {
     cv::Mat icon = ReadIcon(image, *icon_center_iter++);
-    std::string file_name = "dock_" + std::to_string(i) + ".png";
+    std::string file_name = "dock_" + RandomHex() + ".png";
     cv::imwrite(destination_dir + file_name, icon);
   }
 }
