@@ -2,6 +2,8 @@
 
 Guide the user through extracting icons from their iPhone home screen screenshots. Follow each step in order, waiting for user confirmation before proceeding.
 
+> **Device compatibility**: Icon positions are currently calibrated for **iPhone 16 Pro running iOS 26** only. If the user has a different device or OS version, the tool will likely extract the wrong pixels. Warn the user of this at the start.
+
 ## Step 1 — Prepare the iPhone
 
 Tell the user to do the following on their iPhone **before** taking any screenshots:
@@ -15,7 +17,8 @@ Ask the user to confirm they have completed both steps before continuing.
 
 Tell the user to:
 1. Take a screenshot of **each home screen page** they want to extract icons from.
-2. Transfer all screenshots to this computer (via AirDrop, cable, iCloud, etc.).
+2. When the screenshot thumbnail appears in the corner, tap it and choose **Save to Files** — this ensures the file is saved in the expected PNG format.
+3. Transfer all screenshots to this computer (via AirDrop, cable, iCloud, etc.).
 
 Ask the user to provide the paths to the screenshot files once they are on the computer.
 

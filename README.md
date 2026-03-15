@@ -18,7 +18,7 @@ Another thing you need to make sure is that no icon has a red notification bubbl
 
 ## Make the screenshot
 
-When you have finished all steps above, you can take the screenshots of all your home screens and transfer them to your computer.
+When you have finished all steps above, take the screenshots of all your home screens. When the screenshot thumbnail appears in the corner, tap it and choose **Save to Files** — this ensures the file is saved in the expected PNG format. Then transfer the files to your computer.
 
 ## Building the tool
 
