@@ -2,6 +2,7 @@
 #define MOSAIC_EXTRACT_SRC_ICONIO_H_
 
 #include <opencv2/opencv.hpp>
+#include <string>
 
 class IconIO {
  private:
@@ -11,6 +12,7 @@ class IconIO {
 
   static bool IsInSquircle(const float x, const float y);
   static cv::Mat ReadIcon(const cv::Mat &image, const std::pair<int, int> icon_center);
+  static std::string RandomHex();
 
  public:
   static void ExtractAndSavePageIcons(cv::Mat& image, int num_of_icons, const std::string& destination_dir);
