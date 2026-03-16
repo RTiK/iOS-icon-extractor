@@ -2,6 +2,8 @@
 
 This tool extracts iOS home screen icons from a screenshot.
 
+> If you'd like a coding agent to help you, point it to AGENTS.md (if it fails to discover it on its own). The description in that file will help the agent guide you through the icon extraction process.
+
 ## Prerequisites
 
 There are a few things we need to do before taking a screenshot.
@@ -44,7 +46,3 @@ The tool takes a screenshot (PNG) file as input and extracts the icons from the 
 ```
 
 Expected icon locations are defined in `/src/IconCenters.h`. They are currently set for iPhone 16 Pro with iOS 26.
-
-## Nice to have code snippets
-
-- Use CMake to generate _clangd_ compile commands into the `build` folder: `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -B build`
